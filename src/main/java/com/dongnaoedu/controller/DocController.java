@@ -34,14 +34,10 @@ public class DocController {
 		List<PendingDocVo> pendingDocVoList = MakeSrcDoc.makeDoc(num);
 		for(PendingDocVo pend : pendingDocVoList) {
 			// 文档下载到本地
-			// we
+			//MakeSrcDoc
 		}
-		Random r = new Random();
-		int id = r.nextInt(2000);
-		String content = ProblemBank.getRandomString(700);
-		ProblemDBVo vo = new ProblemDBVo(id,content,EncryptTools.EncryptBySHA1(content));
-		mapper.insert(vo);
-		return "insert成功";
+		
+		return "execute成功";
 	}
 	
 
