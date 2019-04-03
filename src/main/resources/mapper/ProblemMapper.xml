@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dongnaoedu.mapper.ProblemMapper" >
+
+  <insert id="insert" parameterType="problemDBVo">
+  	insert into problem(id,content,summary)values(#{id},#{content},#{summary})
+  </insert>
+  
+   <insert id="insertBatch" parameterType="java.util.List">
+  	insert into problem(id,content,summary)values
+  	<foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id}, #{item.content},#{item.summary})
+    </foreach>
+  </insert>
+  
+  <delete id="delete" parameterType="int">
+   delete from problem where id=#{id}
+  </delete>
+  
+  <delete id="deleteAll">
+   delete from problem
+  </delete>
+  
+  <update id="update" parameterType="problemDBVo">
+  	update problem set content=#{content},summary=#{summary} where id=#{id}
+  </update>
+  
+  <select id="queryById" parameterType="int" resultType="problemDBVo">
+  	select id,content,summary from problem where id=#{id}
+  </select>
+
+
+</mapper>
